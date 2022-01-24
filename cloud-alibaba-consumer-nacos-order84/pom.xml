@@ -9,7 +9,8 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>cloud-alibaba-sentinel-service8401</artifactId>
+    <artifactId>cloud-alibaba-consumer-nacos-order84</artifactId>
+
     <dependencies>
         <!-- 持久化 -->
         <dependency>
