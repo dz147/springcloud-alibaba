@@ -50,6 +50,10 @@ public class ApiResult<T> implements Serializable {
         return restResult(data, errorCode);
     }
 
+    public static <T> ApiResult<T> failed(IError errorCode,String msg,T data) {
+        return restResult(data,errorCode,msg);
+    }
+
     public static <T> ApiResult<T> failed(IError errorCode) {
         return restResult(null, errorCode);
     }
