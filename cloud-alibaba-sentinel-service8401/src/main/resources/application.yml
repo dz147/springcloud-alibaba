@@ -31,6 +31,15 @@ spring:
 #            strategy:流控模式,0表示直接,1表示关联,2表示链路
 #            controlbehavior:流控效果,0表示快速失败,1表示 Warm Up,2表示排队等待;
 #            cluster Mode:是否集群。
+#  [{
+#     "resource": "byUrl",
+#     "limitApp": "default",
+#     "grade": 1,
+#     "count": 5,
+#     "strategy": 0,
+#     "controlBehavior": 0,
+#     "clusterMode": false
+#   }]
 # rule-type:flow、degrade、param-flow、system
   #监控
 management:
