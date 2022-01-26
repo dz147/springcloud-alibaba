@@ -18,8 +18,26 @@ spring:
     url: jdbc:mysql://localhost:3306/seata_order?characterEncoding=utf8&useSSL=false&serverTimezone=UTC&rewriteBatchedStatements=true
     username: root
     password: 123456
+
 seata:
-  application-id: ${spring.application.name}
+  enabled: true
+  application-id: ${spring.application.name} #微服务应用名称
+  tx-service-group: tomato_goods_tx_group    #此处配置自定义的seata事务分组名称
+  enable-auto-data-source-proxy: true    #开启数据库代理
+  registry:
+    type: nacos
+    nacos:
+      application: seata-server
+      server-addr: 127.0.0.1:8848 #注册中心nacos地址
+      cluster: default #默认集群名
+  config:
+    type: nacos
+    nacos:
+      server-addr: 127.0.0.1:8848 #配置中心nacos地址
+      group: DEFAULT_GROUP #分组名 对应服务器端配置
+  service:
+    vgroup-mapping:
+      tomato_goods_tx_group: default #事务分组
 
 feign:
   hystrix:
