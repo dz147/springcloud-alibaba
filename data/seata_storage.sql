@@ -22,7 +22,7 @@ SET FOREIGN_KEY_CHECKS = 0;
 -- ----------------------------
 DROP TABLE IF EXISTS `t_storage`;
 CREATE TABLE `t_storage`  (
-  `int` bigint(11) NOT NULL AUTO_INCREMENT,
+  `id` bigint(11) NOT NULL AUTO_INCREMENT,
   `product_id` bigint(11) NULL DEFAULT NULL COMMENT '产品id',
   `total` int(11) NULL DEFAULT NULL COMMENT '总库存',
   `used` int(11) NULL DEFAULT NULL COMMENT '已用库存',

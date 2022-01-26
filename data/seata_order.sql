@@ -22,7 +22,7 @@ SET FOREIGN_KEY_CHECKS = 0;
 -- ----------------------------
 DROP TABLE IF EXISTS `t_order`;
 CREATE TABLE `t_order`  (
-  `int` bigint(11) NOT NULL AUTO_INCREMENT,
+  `id` bigint(11) NOT NULL AUTO_INCREMENT,
   `user_id` bigint(20) NULL DEFAULT NULL COMMENT '用户id',
   `product_id` bigint(11) NULL DEFAULT NULL COMMENT '产品id',
   `count` int(11) NULL DEFAULT NULL COMMENT '数量',

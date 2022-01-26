@@ -5,6 +5,7 @@ import com.bond.springcloud.domain.Order;
 import com.bond.springcloud.service.AccountService;
 import com.bond.springcloud.service.OrderService;
 import com.bond.springcloud.service.StorageService;
+import io.seata.spring.annotation.GlobalTransactional;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
@@ -27,6 +28,7 @@ public class OrderServiceImpl implements OrderService {
     private AccountService accountService;
 
     @Override
+    @GlobalTransactional(name = "my-transactional",rollbackFor = Exception.class)
     public void create(Order order) {
         log.info("------->下单开始");
         //本应用创建订单
