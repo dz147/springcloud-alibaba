@@ -17,27 +17,37 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/seata_storage?characterEncoding=utf8&useSSL=false&serverTimezone=UTC&rewriteBatchedStatements=true
     username: root
-    password: password
+    password: 123456
 
+#Seata分布式事务配置(AT模式)
 seata:
   enabled: true
-  application-id: ${spring.application.name} #微服务应用名称
-  tx-service-group: tomato_goods_tx_group    #此处配置自定义的seata事务分组名称
-  enable-auto-data-source-proxy: true    #开启数据库代理
+  application-id: ${spring.application.name}
+  #客户端和服务端在同一个事务组
+  tx-service-group: my_test_tx_group
+  enable-auto-data-source-proxy: true
+  service:
+    vgroup-mapping:
+      my_test_tx_group: default
+  config:
+    type: nacos
+    nacos:
+      namespace: "public"
+      serverAddr: 127.0.0.1:8848
+      group: SEATA_GROUP
+      username: "nacos"
+      password: "nacos"
+  #服务注册到nacos
   registry:
     type: nacos
     nacos:
       application: seata-server
-      server-addr: 127.0.0.1:8848 #注册中心nacos地址
-      cluster: default #默认集群名
-  #  config:
-  #    type: nacos
-  #    nacos:
-  #      server-addr: 127.0.0.1:8848 #配置中心nacos地址
-  #      group: DEFAULT_GROUP #分组名 对应服务器端配置
-  service:
-    vgroup-mapping:
-      tomato_goods_tx_group: default #事务分组
+      server-addr: 127.0.0.1:8848
+      group: SEATA_GROUP
+      namespace: "public"
+      username: "nacos"
+      password: "nacos"
+      cluster: default
 
 feign:
   hystrix:
