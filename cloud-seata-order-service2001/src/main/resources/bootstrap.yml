@@ -1,0 +1,19 @@
+server:
+  port: 2001
+
+spring:
+  application:
+    name: seata-order-service
+  cloud:
+    nacos:
+      discovery:
+#        server-addr: 47.107.129.194:80 # 注册中心
+      server-addr: localhost:8848
+      config:
+#        server-addr: 47.107.129.194:80 # 配置中心
+        server-addr: localhost:8848
+        file-extension: yml # 这里指定的文件格式需要和nacos上新建的配置文件后缀相同，否则读不到
+        group: DEV_GROUP
+#        namespace: 9c733792-5333-4eca-9862-882eb6183365
+# 优先级loading Namespace>group>dataId
+#  ${spring.application.name}-${spring.profile.active}.${spring.cloud.nacos.config.file-extension}
